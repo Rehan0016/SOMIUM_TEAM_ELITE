@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment</title>
+    <script>
+        function toggleCVVVisibility() {
+            var cvvField = document.getElementById("cvv");
+            if (cvvField.type === "password") {
+                cvvField.type = "text";
+            } else {
+                cvvField.type = "password";
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('stethoscope.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* Navbar Styling */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        /* Payment Container */
+        .payment-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-top: 80px;
+            padding-left: 0px; 
+            padding-right: 400px;/* Adjusted to move form slightly left */
+        }
+
+        .payment-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        .payment-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .payment-box form label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .payment-box form input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .cvv-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .cvv-container i {
+            margin-left: -30px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .pay-button {
+            width: 100%;
+            padding: 12px;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="logo.jpg" alt="Logo" style="height: 40px;">
+            <span style="font-size: 24px; font-weight: bold; color: #333;"></span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Payment Container -->
+    <div class="payment-container">
+        <div class="payment-box">
+            <h2>Secure Payment</h2>
+            <div style="display: flex; justify-content: space-around; margin-top: 10px;">
+                <a href="https://www.visa.co.in/pay-with-visa/click-to-pay-with-visa.html" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Old_Visa_Logo.svg" alt="Visa" style="width: 60px;">
+                </a>
+                <a href="https://www.mastercard.co.in/en-in.html" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" style="width: 60px;"></a>
+                
+                <a href="https://www.paypal.com/in/home" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" style="width: 110px; background: white; border-radius: 5px;"></a>
+                
+            </div>
+
+            <form>
+                <label for="card-name">Cardholder Name</label>
+                <input type="text" id="card-name" placeholder="John Doe" required>
+
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+
+                <label for="expiry-date">Expiry Date</label>
+                <input type="text" id="expiry-date" placeholder="MM/YY" required>
+
+                <label for="cvv">CVV</label>
+                <div class="cvv-container">
+                    <input type="password" id="cvv" placeholder="123" required>
+                    <i onclick="toggleCVVVisibility()">👁️</i>
+                </div>
+
+                <a href="confirmation.html" class="pay-button">Pay Now</a>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile | GreenHeal</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f9fdf9;
+      color: #333;
+    }
+
+    header {
+      background-color: #e0f7e9;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #2e7d32;
+      margin: 0;
+    }
+
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 2px solid #e0f7e9;
+      padding-bottom: 20px;
+    }
+
+    .profile-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #2e7d32;
+    }
+
+    .profile-header h2 {
+      margin: 0;
+      color: #2e7d32;
+    }
+
+    .profile-section {
+      margin: 30px 0;
+    }
+
+    .profile-section h3 {
+      color: #2e7d32;
+      margin-bottom: 10px;
+    }
+
+    .profile-section p, .order-item {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .order-history, .address-list {
+      border: 1px solid #e0f7e9;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: #f5fff8;
+    }
+
+    .order-item {
+      border-bottom: 1px solid #e0f7e9;
+      padding: 10px 0;
+    }
+
+    .order-item:last-child {
+      border-bottom: none;
+    }
+
+    .edit-btn {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .edit-btn:hover {
+      background-color: #1b5e20;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #2e7d32;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>GreenHeal</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="profile-header">
+      <img src="https://via.placeholder.com/100" alt="User Avatar">
+      <div>
+        <h2>Jane Doe</h2>
+        <p>Email: jane.doe@example.com</p>
+        <p>Phone: +1 555 123 456</p>
+        <button class="edit-btn">Edit Profile</button>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>📦 Order History</h3>
+      <div class="order-history">
+        <div class="order-item">
+          <strong>Order #1234</strong> - Herbal Supplements - $25.00 - <em>Delivered</em>
+        </div>
+        <div class="order-item">
+          <strong>Order #5678</strong> - Organic Skincare Cream - $18.00 - <em>In Transit</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>🏡 Saved Addresses</h3>
+      <div class="address-list">
+        <p>📍 123 Green Street, Springfield, IL</p>
+        <p>📍 456 Wellness Avenue, Chicago, IL</p>
+        <button class="edit-btn">Manage Addresses</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 GreenHeal | All Rights Reserved
+  </footer>
+</body>
+</html>

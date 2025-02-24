@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenHeal - Premium Health Products</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fdf9;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+     #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #loader video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #content {
+      display: none;
+      padding: 20px;
+    }
+   
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background-color: #e0f7e9;
+      transition: background-color 0.3s ease;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #2e7d32;
+      font-size: 24px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #1b5e20;
+    }
+
+    .cart-icon {
+      font-size: 22px;
+      cursor: pointer;
+      margin-left: 15px;
+      position: relative;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .cart-icon:hover {
+      color: #1b5e20;
+      transform: scale(1.2);
+    }
+
+    .hero {
+      position: relative;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1);
+      transition: transform 5s ease;
+    }
+
+    .hero:hover img {
+      transform: scale(1.1);
+    }
+
+    .search-bar {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease;
+    }
+
+    .search-bar input {
+      width: 300px;
+      padding: 15px;
+      border: none;
+      border-radius: 8px 0 0 8px;
+      outline: none;
+      font-size: 18px;
+      background: rgba(255, 255, 255, 0.6);
+      transition: background 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .search-bar button {
+      padding: 15px 25px;
+      border: none;
+      background-color: #2e7d32;
+      color: white;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .search-bar button:hover {
+      background-color: #1b5e20;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fdf9;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background-color: #e0f7e9;
+      transition: background-color 0.3s ease;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #2e7d32;
+      font-size: 24px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #1b5e20;
+    }
+
+    .cart-icon {
+      font-size: 22px;
+      cursor: pointer;
+      margin-left: 15px;
+      position: relative;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .cart-icon:hover {
+      color: #1b5e20;
+      transform: scale(1.2);
+    }
+
+    .hero {
+      position: relative;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1);
+      transition: transform 5s ease;
+    }
+
+    .hero:hover img {
+      transform: scale(1.1);
+    }
+
+    .search-bar {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease;
+    }
+
+    .search-bar input {
+      width: 300px;
+      padding: 15px;
+      border: none;
+      border-radius: 8px 0 0 8px;
+      outline: none;
+      font-size: 18px;
+      background: rgba(255, 255, 255, 0.6);
+      transition: background 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .search-bar button {
+      padding: 15px 25px;
+      border: none;
+      background-color: #2e7d32;
+      color: white;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .search-bar button:hover {
+      background-color: #1b5e20;
+    }
+
+    .products {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .products h3 {
+      color: #2e7d32;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .product-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .product-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 250px;
+      padding: 20px;
+      background-color: #ffffff;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .product-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .product-card h4 {
+      margin: 15px 0 10px;
+      color: #2e7d32;
+      font-size: 18px;
+    }
+
+    .product-card button {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .product-card button:hover {
+      background-color: #1b5e20;
+    }
+
+    .steps-section {
+      background-color: #e0f7e9;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .steps-section h3 {
+      color: #2e7d32;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .steps-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .step-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 200px;
+      padding: 20px;
+      background-color: #ffffff;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .step-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .step-card h4 {
+      margin: 10px 0;
+      color: #2e7d32;
+      font-size: 18px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+      background-color: #2e7d32;
+      color: white;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #e0f7e9;
+      text-decoration: none;
+      display: block;
+      margin: 5px 0;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      .product-list,
+      .steps-list {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Loader -->
+  <div id="loader">
+    <video src="istockphoto-2147712089-640_adpp_is.mp4" autoplay muted loop></video>
+  </div>
+
+  <!-- Main Content -->
+  <header>
+    <h1>GreenHeal</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="productspage.html">Products</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="cart.html" class="cart-icon">🛒</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="front page.webp" alt="Hero Image">
+    <div class="search-bar">
+      <input type="text" placeholder="Search products...">
+      <button>Search</button>
+    </div>
+    <h2>Welcome to GreenHeal</h2>
+    <p>Your trusted partner for premium health products.</p>
+  </section>
+
+  <section class="products">
+    <h3>Featured Products</h3>
+    <div class="product-list">
+      <div class="product-card">
+        <img src="herbal.jpg" alt="Herbal Supplements">
+        <h4>Herbal Supplements</h4>
+        <p>$25.00</p>
+        <button>Shop Now</button>
+      </div>
+      <div class="product-card">
+        <img src="herbal2.jpg" alt="Organic Skincare Cream">
+        <h4>Organic Skincare Cream</h4>
+        <p>$18.00</p>
+        <button>Shop Now</button>
+      </div>
+      <div class="product-card">
+        <img src="herbal3.jpg" alt="Multivitamins Pack">
+        <h4>Multivitamins Pack</h4>
+        <p>$30.00</p>
+        <button>Shop Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps-section">
+    <h3>How It Works</h3>
+    <div class="steps-list">
+      <div class="step-card">
+        <h4>1. Browse Products</h4>
+        <p>Explore our wide range of premium health products.</p>
+      </div>
+      <div class="step-card">
+        <h4>2. Add to Cart</h4>
+        <p>Select your favorite items and add them to your cart.</p>
+      </div>
+      <div class="step-card">
+        <h4>3. Secure Checkout</h4>
+        <p>Complete your purchase with our secure payment process.</p>
+      </div>
+      <div class="step-card">
+        <h4>4. Fast Delivery</h4>
+        <p>Receive your order quickly at your doorstep.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <p><strong>Contact Us</strong></p>
+      <p>Email: <a href="mailto:contact@greenheal.com">contact@greenheal.com</a></p>
+      <p>Phone: +1 555 123 456</p>
+    </div>
+    <div>
+      <p><strong>Follow Us</strong></p>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </div>
+    <div>
+      <p><strong>Legal</strong></p>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </footer>
+  <script>
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      const content = document.getElementById('content');
+
+      setTimeout(() => {
+        loader.style.display = 'none';
+        content.style.display = 'block';
+      }, 3000); // Adjust the timeout as needed
+    });
+  </script>
+</body>
+
+</html>

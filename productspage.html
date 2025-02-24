@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenHeal - Products</title>
+  <style>
+    /* Base Styling */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fdf9;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background-color: #e0f7e9;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      color: #2e7d32;
+      font-size: 24px;
+      margin: 0;
+    }
+
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Product Grid */
+    .products {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .products h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #2e7d32;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .product-grid.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .product-info {
+      padding: 20px;
+      text-align: left;
+    }
+
+    .product-info h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #2e7d32;
+    }
+
+    .product-info p {
+      margin: 10px 0;
+      color: #555;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #388e3c;
+    }
+
+    /* Add to Cart Button */
+    .add-to-cart {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #2e7d32;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .add-to-cart:hover {
+      background-color: #1b5e20;
+    }
+
+    /* Ripple Effect */
+    .add-to-cart::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      transform: scale(0);
+      opacity: 0;
+      transition: transform 0.5s, opacity 0.5s;
+      pointer-events: none;
+    }
+
+    .add-to-cart:active::after {
+      transform: scale(4);
+      opacity: 0;
+      transition: transform 0.5s, opacity 0.5s;
+    }
+
+    /* Scroll Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2e7d32;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 18px;
+      }
+
+      .products h2 {
+        font-size: 2rem;
+      }
+
+      .add-to-cart {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>GreenHeal</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="productspage.html">Products</a>
+      <a href="conco">Contact</a>
+    </nav>
+  </header>
+
+  <section class="products">
+    <h2 class="fade-in">Our Premium Products</h2>
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card fade-in">
+        <img src="medicine1.jpg" alt="Product 1">
+        <div class="product-info">
+          <h3>Herbal Supplement</h3>
+          <p>Boost your health naturally.</p>
+          <p class="price">$25.00</p>
+          <a href="cart.html" class="add-to-cart">Add to Cart</a>
+
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card fade-in">
+        <img src="medicine3.jpg" alt="Product 2">
+        <div class="product-info">
+          <h3>Organic Skincare</h3>
+          <p>Gentle and effective skincare.</p>
+          <p class="price">$18.00</p>
+          <a href="cart.html" class="add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card fade-in">
+        <img src="medicine2.jpg" alt="Product 3">
+        <div class="product-info">
+          <h3>Multivitamins Pack</h3>
+          <p>Essential nutrients daily.</p>
+          <p class="price">$30.00</p>
+          <a href="cart.html" class="add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card fade-in">
+        <img src="medicine7.jpg" alt="Product 4">
+        <div class="product-info">
+          <h3>Immunity Booster</h3>
+          <p>Strengthen your immunity.</p>
+          <p class="price">$22.00</p>
+          <a href="cart.html" class="add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 GreenHeal. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll Animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Product Grid Load Animation
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.product-grid').classList.add('visible');
+    });
+  </script>
+
+</body>
+</html>

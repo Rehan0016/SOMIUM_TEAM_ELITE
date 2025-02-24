@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation - GreenHeal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fdf9;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background-color: #e0f7e9;
+      padding: 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #2e7d32;
+      font-size: 28px;
+    }
+
+    .confirmation-container {
+      margin: 50px auto;
+      max-width: 600px;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-out;
+    }
+
+    .confirmation-container h2 {
+      color: #2e7d32;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .confirmation-container p {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .order-summary {
+      text-align: left;
+      margin-top: 30px;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+    }
+
+    .order-summary h3 {
+      color: #2e7d32;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .order-summary ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .order-summary li {
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn-container {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-home {
+      background-color: #2e7d32;
+    }
+
+    .btn-home:hover {
+      background-color: #1b5e20;
+    }
+
+    .btn-track {
+      background-color: #2e7d32;
+    }
+
+    .btn-track:hover {
+      background-color: #01579b;
+    }
+
+    .btn i {
+      margin-right: 8px;
+    }
+
+    footer {
+      background-color: #2e7d32;
+      color: white;
+      padding: 10px;
+      margin-top: 50px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .checkmark {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #2e7d32;
+      display: inline-block;
+      position: relative;
+      margin-bottom: 20px;
+      animation: popIn 0.6s ease-out;
+    }
+
+    .checkmark::after {
+      content: '';
+      width: 20px;
+      height: 40px;
+      border: solid white;
+      border-width: 0 6px 6px 0;
+      position: absolute;
+      top: 25px;
+      left: 35px;
+      transform: rotate(45deg);
+      animation: drawCheck 0.5s ease-out forwards 0.3s;
+      opacity: 0;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes drawCheck {
+      to {
+        opacity: 1;
+      }
+    }
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: 600;
+      font-size: 14px;
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <header>
+    <header>
+       
+        <nav>
+            <h1>GreenHeal</h1>
+          <a href="index.html">Home</a>
+          <a href="">About Us</a>
+          <a href="productspage.html">Products</a>
+          <a href="#">Contact Us</a>
+          <a href="cart.html" class="cart-icon">🛒</a>
+        </nav>
+      </header>
+  </header>
+
+  <div class="confirmation-container">
+    <div class="checkmark"></div>
+    <h2>Thank You for Your Order! 🎉</h2>
+    <p>Your order has been placed successfully. A confirmation email has been sent to <strong>youremail@example.com</strong>.</p>
+    <p><strong>Order ID:</strong> #GH123456</p>
+
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <ul>
+        <li><span>Herbal Supplements</span><span>$25.00</span></li>
+        <li><span>Organic Skincare Cream</span><span>$18.00</span></li>
+        <li><span>Multivitamins Pack</span><span>$30.00</span></li>
+        <li><strong>Total</strong><strong>$73.00</strong></li>
+      </ul>
+    </div>
+
+    <div class="btn-container">
+      <a href="index.html" class="btn btn-home"><i class="fas fa-shopping-bag"></i> Continue Shopping</a>
+      <a href="track-order.html" class="btn btn-track"><i class="fas fa-map-marker-alt"></i> Track Order</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 GreenHeal. All rights reserved.</p>
+  </footer>
+
+</body>
+
+</html>

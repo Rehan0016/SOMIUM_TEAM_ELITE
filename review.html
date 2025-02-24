@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenHeal - Reviews</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fdf9;
+      color: #333;
+    }
+
+    header {
+      background-color: #e0f7e9;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #2e7d32;
+      margin: 0;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: 600;
+    }
+
+    .review-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .review-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+
+    .stars {
+      color: gold;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    .review-text {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .review-card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .review-card .review-details {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .add-review-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .add-review-btn {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+
+    .stars span {
+      font-size: 24px;
+    }
+
+    .stars span:hover,
+    .stars span.selected {
+      color: orange;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>GreenHeal</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="productspage.html">Products</a>
+      <a href="#">Support</a>
+      <a href="user.html">Profile</a>
+    </nav>
+  </header>
+
+  <div class="add-review-container">
+    <button class="add-review-btn" onclick="openModal()">Add Review</button>
+  </div>
+
+  <div class="modal" id="review-modal">
+    <h2>Add a Review</h2>
+    <input type="text" id="reviewer-name" placeholder="Your Name"><br><br>
+    <input type="text" id="reviewer-image" placeholder="Image URL"><br><br>
+    <div class="stars" id="rating">
+      <span data-value="1">★</span>
+      <span data-value="2">★</span>
+      <span data-value="3">★</span>
+      <span data-value="4">★</span>
+      <span data-value="5">★</span>
+    </div>
+    <textarea id="review-text" placeholder="Write your review..."></textarea><br><br>
+    <button onclick="submitReview()">Submit</button>
+    <button onclick="closeModal()">Cancel</button>
+  </div>
+
+  <div class="review-container" id="review-container"></div>
+
+  <script>
+    const reviews = [
+      { name: "Alice", rating: 5, text: "Absolutely love it! It has changed my daily routine.", image: "https://randomuser.me/api/portraits/women/1.jpg" },
+      { name: "Bob", rating: 4, text: "Works great, but there's room for improvement.", image: "https://randomuser.me/api/portraits/men/2.jpg" },
+      { name: "Charlie", rating: 5, text: "Fantastic! Highly recommended to everyone.", image: "https://randomuser.me/api/portraits/men/3.jpg" },
+      { name: "Diana", rating: 3, text: "It's decent, but I expected more features.", image: "https://randomuser.me/api/portraits/women/4.jpg" },
+      { name: "Emily", rating: 5, text: "Absolutely amazing! This is exactly what I needed.", image: "https://randomuser.me/api/portraits/women/5.jpg" },
+      { name: "Frank", rating: 4, text: "Great product but can be improved in some areas.", image: "https://randomuser.me/api/portraits/men/6.jpg" },
+      { name: "Grace", rating: 3, text: "Not bad, but I was expecting better results.", image: "https://randomuser.me/api/portraits/women/7.jpg" },
+      { name: "Henry", rating: 5, text: "Excellent quality and great value for money.", image: "https://randomuser.me/api/portraits/men/8.jpg" }
+    ];
+
+    let selectedRating = 5;
+
+    document.querySelectorAll(".stars span").forEach(star => {
+      star.addEventListener("click", function() {
+        selectedRating = this.getAttribute("data-value");
+        document.querySelectorAll(".stars span").forEach(s => s.classList.remove("selected"));
+        this.classList.add("selected");
+      });
+    });
+
+    function openModal() {
+      document.getElementById("review-modal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("review-modal").style.display = "none";
+    }
+
+    function submitReview() {
+      const name = document.getElementById("reviewer-name").value || "Anonymous";
+      const text = document.getElementById("review-text").value || "No comments.";
+      const image = document.getElementById("reviewer-image").value || "https://via.placeholder.com/60";
+
+      const newReview = { name, rating: selectedRating, text, image };
+      reviews.push(newReview);
+      displayReviews();
+      closeModal();
+    }
+
+    function displayReviews() {
+      const reviewContainer = document.getElementById("review-container");
+      reviewContainer.innerHTML = ""; // Clear old content
+
+      // Loop through all reviews and display them
+      reviews.forEach(review => {
+        const reviewCard = document.createElement("div");
+        reviewCard.classList.add("review-card");
+        reviewCard.innerHTML = `
+          <div class="review-details">
+            <img src="${review.image}" alt="Reviewer Image">
+            <div>
+              <h4>${review.name}</h4>
+              <div class="stars">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+            </div>
+          </div>
+          <p class="review-text">${review.text}</p>
+        `;
+        reviewContainer.appendChild(reviewCard);
+      });
+    }
+
+    displayReviews();
+  </script>
+
+</body>
+</html>

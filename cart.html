@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Add to Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #2e7d32;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin-right: 15px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            margin-top: 20px;
+        }
+        .product-gallery {
+            width: 40%;
+        }
+        .main-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .thumbnail-images {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .thumbnail-images img {
+            width: 70px;
+            height: 70px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .product-info {
+            width: 55%;
+        }
+        .price {
+            font-size: 22px;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        .original-price {
+            text-decoration: line-through;
+            color: gray;
+        }
+        .discount {
+            color: green;
+            font-weight: bold;
+        }
+        .quantity {
+            margin: 10px 0;
+        }
+        .add-to-cart, .buy-now {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .add-to-cart {
+            background-color: #ff9800;
+            color: white;
+        }
+        .buy-now {
+            background-color: #d32f2f;
+            color: white;
+        }
+        .description {
+            margin-top: 15px;
+            font-size: 15px;
+            color: #555;
+        }
+        .offers-list {
+            background: #eef7ff;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .delivery {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+        .pincode-check {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .pincode-check input {
+            padding: 5px;
+            width: 120px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .pincode-check button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delivery-message {
+            margin-top: 10px;
+            font-size: 14px;
+            color: green;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>My Pharmacy</h2>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="productspage.html">Products</a>
+            <a href="cart.html">Cart</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product-gallery">
+            <div class="main-image">
+                <img id="mainImage" src="medicine1.jpg" alt="Medicine Image">
+            </div>
+            <div class="thumbnail-images">
+                <img src="medicine1.jpg" alt="Medicine 1" onclick="changeImage(this)">
+                <img src="medicine2.jpg" alt="Medicine 2" onclick="changeImage(this)">
+                <img src="medicine3.jpg" alt="Medicine 3" onclick="changeImage(this)">
+            </div>
+        </div>
+        <div class="product-info">
+            <h2>PharmaPlus Pain Relief Tablets</h2>
+            <p class="rating">⭐⭐⭐⭐⭐ 320 Ratings & 40 Reviews</p>
+            <p class="price"><span class="discount-price">₹299</span> <span class="original-price">₹499</span> <span class="discount">40% off</span></p>
+            <div class="offers-list">
+                <p>✅ Special Discount Applied</p>
+                <p>✅ Free Shipping Available</p>
+                <p>✅ 10% Off on Orders Above ₹1000</p>
+                <p>✅ 24/7 Customer Support</p>
+                <p>✅ COD Available</p>
+                <p>✅ Fast Delivery in 2 Days</p>
+            </div>
+            <p class="description">PharmaPlus Pain Relief Tablets provide fast and effective relief from body pain and inflammation. Recommended by experts, it is safe and clinically tested.</p>
+            <div class="quantity">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" min="1" value="1">
+            </div>
+            <div class="pincode-check">
+                <input type="text" id="pincode" placeholder="Enter Pincode">
+                <button onclick="checkPincode()">Check</button>
+            </div>
+            <p class="delivery-message" id="deliveryMessage"></p>
+            <p class="delivery">Estimated Delivery: <strong>Feb 27, 2025</strong></p>
+           
+            <a href="payment.html" onclick="return confirm('Are you sure you want to proceed with the purchase?')">
+                <button class="buy-now">⚡ BUY NOW</button>
+              </a>
+              
+        </div>
+    </div>
+    <script>
+        function changeImage(img) {
+            document.getElementById("mainImage").src = img.src;
+        }
+
+        function checkPincode() {
+            const pincode = document.getElementById("pincode").value;
+            const deliveryMessage = document.getElementById("deliveryMessage");
+            if (pincode) {
+                deliveryMessage.innerText = `✅ We will deliver this item to ${pincode}`;
+                deliveryMessage.style.display = "block";
+            } else {
+                deliveryMessage.innerText = "❌ Please enter a valid pincode.";
+                deliveryMessage.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
